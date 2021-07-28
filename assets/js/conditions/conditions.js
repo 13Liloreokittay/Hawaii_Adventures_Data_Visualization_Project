@@ -42,7 +42,7 @@ function createMap(beachConditions) {
   };
 
   // Create the map object with options
-  var map = L.map("beachConditions", {
+  var map = L.map("map", {
     center: [20.365556, -157.959384],
     zoom: 8,
     layers: [outdoorMap, beachConditions]
