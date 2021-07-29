@@ -1,5 +1,18 @@
+DROP TABLE hotels 
 DROP TABLE climate
 
+
+CREATE TABLE hotels (
+	latitude DECIMAL NOT NULL,
+	longitude DECIMAL NOT NULL,
+	island VARCHAR(30),
+	city_name VARCHAR(100),
+	address VARCHAR(100),
+	lodging_type VARCHAR(45),
+	year_open INTEGER 
+);
+SELECT * FROM hotels
+--------------------------------
 CREATE TABLE climate (
 	island VARCHAR(30),
 	weather_type VARCHAR(45),
