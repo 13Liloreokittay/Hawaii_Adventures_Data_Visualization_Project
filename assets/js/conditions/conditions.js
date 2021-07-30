@@ -64,7 +64,7 @@ d3.json(queryUrl, function (data) {
 
 
 
-// Perform an API call to the Citi Bike API to get station information. Call createMarkers when complete
+// Perform an API call to the API to get station information. Call createMarkers when complete
 d3.json("https://hawaiibeachsafety.com/rest/conditions.json",
 
   function (response) {
