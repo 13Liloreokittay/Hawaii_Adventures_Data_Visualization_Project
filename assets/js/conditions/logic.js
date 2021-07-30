@@ -109,6 +109,7 @@ function createMap(earthquakes, plates) {
         zoom: 4.5,
         // Set default layers
         layers: [satellite, earthquakes, plates]
+        
     });
     // Create a legend for the map based on the earthquakes data and colors
     var legend = L.control({position: "bottomright"});

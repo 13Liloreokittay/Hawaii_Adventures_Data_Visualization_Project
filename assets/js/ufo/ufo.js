@@ -29,25 +29,19 @@ function runFilter() {
   // assign input value in the form to variable
   var dateInput = d3.select("#datetime").property("value").trim();
   var cityInput = d3.select("#city").property("value").toLowerCase().trim();
-  var stateInput = d3.select("#state").property("value").toLowerCase().trim();
-  var countryInput = d3.select("#country").property("value").toLowerCase().trim();
   var shapeInput = d3.select("#shape").property("value").toLowerCase().trim();
   
   // track of inputs on console log
   console.group(`Date: ${dateInput}`);
   console.group(`City: ${cityInput}`);
-  console.group(`State: ${stateInput}`);
-  console.group(`Country: ${countryInput}`);
   console.group(`Shape: ${shapeInput}`);
 
   // empty the table object before appending filter results
   tbody.html("");
 
   // Filter sightings to specified date
-  var results = tableData.filter(sighting => (sighting.datetime == dateInput || dateInput == "") &&
+  var results = tableData.filter(sighting => (sighting.dateTime == dateInput || dateInput == "") &&
                                 (sighting.city == cityInput || cityInput == "") &&
-                                (sighting.state == stateInput || stateInput == "") &&
-                                (sighting.country == countryInput || countryInput == "") &&
                                 (sighting.shape == shapeInput || shapeInput == "")
                                 );
   
