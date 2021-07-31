@@ -1,5 +1,4 @@
-var data = [
-  {
+var data = [{
     dateTime: "1/1/1994 0:00",
     city: "Honolulu",
     shape: "Light",
@@ -4402,4 +4401,4 @@ var data = [
     DurationMinutes: "5-10 seconds",
     comments: "Green spherical “Orb” traveling exceedingly fast east to west at apparent low altitude over Oahu."
   }
-]
+];

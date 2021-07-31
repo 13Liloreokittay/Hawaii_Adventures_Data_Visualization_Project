@@ -71,7 +71,7 @@ d3.json("https://hawaiibeachsafety.com/rest/conditions.json",
     console.log(response);
 
     // Pull the "lat" and "lon" property off of response.data
-    var markers = response;
+    // var markers = response;
 
     // Initialize an array to hold beach markers
     var beachMarkers = [];
@@ -85,11 +85,12 @@ d3.json("https://hawaiibeachsafety.com/rest/conditions.json",
         .bindPopup("<h1>" + response[i].beach + "</h1>" + "<hr>" +
                     "<h3>Island: " + response[i].island + "</h3>" +
                     "<h3>Shore: " + response[i].shore + "</h3>" + "<hr>" +
-                    "<h2>" + "Current Weather Conditions" + "</h2>" +
+                    // "<h2>" + "Current Weather Conditions" + "</h2>" +
                     "<h3>Temperature: " + response[i].temp + "</h3>" +
                     "<h3>Weather: " + response[i].weather + "</h3>" +
-                    "<h3>Wind: " + response[i].wind + "</h3>" +
-                    "<h3>Surf: " + response[i].surf + "</h3>");
+                    "<h3>Surf: " + response[i].surf + "</h3>" +
+                    "<h3>" + response[i].link + "</h3>");
+                    
 
       // Add the marker to the bikeMarkers array
       beachMarkers.push(beachMarker);

@@ -16,7 +16,7 @@ tableData.forEach(function(ufoData) {
 console.log(tableData);
 
 // filter the data
-var form = d3.select("#datetime");
+var form = d3.select("#city");
 var button = d3.select("#filter-btn");
 
 // Assign handler function to target objects in HTML file
@@ -27,12 +27,12 @@ button.on("click", runFilter);
 function runFilter() {
   d3.event.preventDefault();
   // assign input value in the form to variable
-  var dateInput = d3.select("#datetime").property("value").trim();
+  // var dateInput = d3.select("#datetime").property("value").trim();
   var cityInput = d3.select("#city").property("value").toLowerCase().trim();
   var shapeInput = d3.select("#shape").property("value").toLowerCase().trim();
   
   // track of inputs on console log
-  console.group(`Date: ${dateInput}`);
+  // console.group(`Date: ${dateInput}`);
   console.group(`City: ${cityInput}`);
   console.group(`Shape: ${shapeInput}`);
 
@@ -40,8 +40,7 @@ function runFilter() {
   tbody.html("");
 
   // Filter sightings to specified date
-  var results = tableData.filter(sighting => (sighting.dateTime == dateInput || dateInput == "") &&
-                                (sighting.city == cityInput || cityInput == "") &&
+  var results = tableData.filter(sighting => (sighting.city == cityInput || cityInput == "") &&
                                 (sighting.shape == shapeInput || shapeInput == "")
                                 );
   

@@ -20,8 +20,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.11.0/d3.js"></script>
     <!-- leaflet css -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
-    integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
-    crossorigin="" />
+        integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+        crossorigin="" />
 
 </head>
 
@@ -108,9 +108,11 @@
             </div>
         </div>
     </div>
+    <!-- end of header -->
+
+    <!-- main body for table -->
     <div class="main support-raised">
-        <div class="container">
-            <div class="container">
+                    <div class="container">
                 <br>
                 <div class="row">
                     <div class="col-md-2">
@@ -123,31 +125,26 @@
                                         <div class="form-group">
                                             <ul class="list-group" id="filters">
                                                 <li class="filter list-group-item">
-                                                    <label for="date">Enter a Date</label>
-                                                    <input class="form-control" id="datetime" type="text"
-                                                        placeholder="1/11/2011">
-                                                </li>
-                                                <li class="filter list-group-item">
                                                     <label for="city">Enter a City</label>
                                                     <input class="form-control" id="city" type="text"
-                                                        placeholder="Grants Pass">
+                                                        placeholder="Honolulu">
                                                 </li>
                                                 <li class="filter list-group-item">
                                                     <label for="shape">Enter a Shape</label>
                                                     <input class="form-control" id="shape" type="text"
-                                                        placeholder="Triangle">
+                                                        placeholder="Disk">
                                                 </li>
                                             </ul>
                                         </div>
-                                        <button id="filter-btn" type="button" class="btn btn-rose">FilterTable</button>
+                                        <button id="filter-btn" type="button" class="btn btn-rose">Search</button>
                                     </form>
                                 </div>
                             </div>
                         </aside>
                     </div>
-                    <div class="col-md-10 table-responsive-xsm">
+                    <div class="col-md-10">
                         <div id="table-area" class="">
-                            <table id="ufo-table"
+                            <table height=700 width=auto id="ufo-table"
                                 class="table table-striped table-bordered table-hover table-responsive"
                                 style="text-align: center">
                                 <thead>
@@ -165,7 +162,6 @@
                     </div>
                 </div>
             </div>
-        </div>
     </div>
 
 
@@ -176,24 +172,19 @@
             <nav class="float-left">
                 <ul>
                     <li>
-                        <a href="https://www.creative-tim.com/">
-                            Team Hawaii!
+                        <a href="https://github.com/Caleman34/Hawaii_Adventures_Data_Visualization_Project.git"
+                            target="_blank"><img src="../assets/img/github.svg" alt="Logo" style="width:40px;">
                         </a>
                     </li>
                 </ul>
             </nav>
-            <div class="copyright float-right">
-                &copy;
-                <script>
-                    document.write(new Date().getFullYear())
-                </script>, made with <i class="material-icons">favorite</i> by
-                <a href="https://www.creative-tim.com/" target="_blank">Team Hawaii</a> for a better experience.
+            <div class="copyright float-right">A UTSA Data Analytics & Data Visualization Full Stack Project &copy; 2021
             </div>
         </div>
     </footer>
 
     <!-- Our JS -->
-    <script type="text/csv" src="../assets/js/ufo/data.js"></script>
+    <script type="text/javascript" src="../assets/js/ufo/data.js"></script>
     <script type="text/javascript" src="../assets/js/ufo/ufo.js"></script>
 
     <!--   Core JS Files   -->
