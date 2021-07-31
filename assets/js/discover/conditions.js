@@ -55,17 +55,20 @@ function createMap(beachConditions) {
 }
 
 // Store our API endpoint inside queryUrl
-// var queryUrl = "https://hawaiibeachsafety.com/rest/conditions.json";
+var queryUrl = "https://hawaiibeachsafety.com/rest/conditions.json";
+
+// hard code for backup incase CORS error
+// var gueryUrl = "/assets/js/discover/conditions.json";
 
 // // Perform a GET request to the query URL
-// d3.json(queryUrl, function (data) {
-//   console.log(data);
-// });
+d3.json(queryUrl, function (data) {
+  console.log(data);
+});
 
 
 
 // Perform an API call to the API to get station information. Call createMarkers when complete
-d3.json("/assets/js/discover/conditions.json",
+d3.json("https://hawaiibeachsafety.com/rest/conditions.json",
 
   function (response) {
     console.log(response);
@@ -75,7 +78,6 @@ d3.json("/assets/js/discover/conditions.json",
 
     // Initialize an array to hold beach markers
     var beachMarkers = [];
-    console.log(beachMarkers);
 
     // Loop through the stations array
     for (var i = 0; i < response.length; i++) {
@@ -89,7 +91,7 @@ d3.json("/assets/js/discover/conditions.json",
                     "<h6>Temperature: " + response[i].temp + " F" + "</h6>" +
                     "<h6>Weather: " + response[i].weather + "</h6>" +
                     "<h6>Surf: " + response[i].surf + "</h6>" +
-                    "<h6>" + response[i].link + "</h6>");
+                    "<a href=" + response[i].link + "<h6>" +  response[i].link + "</h6> </a>");
                     
 
       // Add the marker to the bikeMarkers array

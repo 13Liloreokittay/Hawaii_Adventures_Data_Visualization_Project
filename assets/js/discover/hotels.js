@@ -56,9 +56,10 @@ function createMap(beachConditions) {
 
 // Store our API endpoint inside queryUrl
 var queryData = "/assets/js/discover/hotels.json";
+// var queryData = hotelData;
 
 // Perform a GET request to the query URL
-d3.csv(queryData, function (data) {
+d3.json(queryData, function (data) {
   console.log(data);
 });
 
@@ -75,26 +76,24 @@ d3.json(queryData,
 
     // Initialize an array to hold beach markers
     var beachMarkers = [];
-    console.log(beachMarkers);
 
     // Loop through the stations array
     for (var i = 0; i < response.length; i++) {
-
+console.log(response[i].year_open);
       // For each station, create a marker and bind a popup with the station's name
-      var beachMarker = L.marker([response.lat, response.lon])
-      console.log(beachMarker);
-        // .bindPopup("<h1>" + response[i].beach + "</h1>" + "<hr>" +
-        //   "<h3>Island: " + response[i].island + "</h3>" +
-        //   "<h3>Address: " + response[i].address + "</h3>" + "<hr>" +
-        //   // "<h2>" + "Current Weather Conditions" + "</h2>" +
-        //   "<h3>Name of Lodging: " + response[i].name + "</h3>" +
-        //   "<h3>Type of Lodging: " + response[i].type + "</h3>" +
-        //   "<h3>Opened: " + response[i].year_open + "</h3>");
+      var beachMarker = L.marker([response[i].lat, response[i].lon])
+        .bindPopup("<h3>Island: " + response[i].island + "</h3>" +
+          "<h3>Address: " + response[i].address + "</h3>" + "<hr>" +
+          // "<h2>" + "Current Weather Conditions" + "</h2>" +
+          "<h3>Name of Lodging: " + response[i].name + "</h3>" +
+          "<h3>Type of Lodging: " + response[i].type + "</h3>" +
+          "<h3>Opened: " + response[i].year_open + "</h3>");
 
 
       // Add the marker to the bikeMarkers array
-      // console.log(beachMarker);
+      
       beachMarkers.push(beachMarker);
+      console.log(beachMarker);
     }
 
     // Create a layer group made from the bike markers array, pass it into the createMap function
