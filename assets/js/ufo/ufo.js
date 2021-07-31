@@ -1,13 +1,13 @@
-var tableData = data;
+var tableData = d3.json("ufoData.json");
 var tbody = d3.select("tbody");
 
 // read data from data.js into table on html using JS
 tableData.forEach(function(ufoData) {
-  console.log(ufoData);
+  // console.log(ufoData);
   var row = tbody.append("tr");
 
   Object.entries(ufoData).forEach(function([key, value]) {
-    console.log(key, value);
+    // console.log(key, value);
     var cell = row.append("td");
     cell.text(value);
   });
@@ -16,7 +16,7 @@ tableData.forEach(function(ufoData) {
 console.log(tableData);
 
 // filter the data
-var form = d3.select("#city");
+var form = d3.select("#shape");
 var button = d3.select("#filter-btn");
 
 // Assign handler function to target objects in HTML file
@@ -33,8 +33,8 @@ function runFilter() {
   
   // track of inputs on console log
   // console.group(`Date: ${dateInput}`);
-  console.group(`City: ${cityInput}`);
-  console.group(`Shape: ${shapeInput}`);
+  console.log(`City: ${cityInput}`);
+  console.log(`Shape: ${shapeInput}`);
 
   // empty the table object before appending filter results
   tbody.html("");
@@ -52,6 +52,6 @@ function runFilter() {
       cell.text(value);
     });
   });
-  }
+}
 
   

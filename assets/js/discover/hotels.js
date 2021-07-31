@@ -38,7 +38,7 @@ function createMap(beachConditions) {
 
   // Create an overlayMaps object to hold the beach conditions layer
   var overlayMaps = {
-    "Beaches": beachConditions
+    "Beach": beachConditions
   };
 
   // Create the map object with options
@@ -55,17 +55,17 @@ function createMap(beachConditions) {
 }
 
 // Store our API endpoint inside queryUrl
-var queryUrl = "https://hawaiibeachsafety.com/rest/conditions.json";
+var queryData = "../../assets/data/csv/lodging_hawaii.csv";
 
 // Perform a GET request to the query URL
-d3.json(queryUrl, function (data) {
+d3.csv(queryData, function (data) {
   console.log(data);
 });
 
 
 
-// Perform an API call to the API to get station information. Call createMarkers when complete
-d3.json("https://hawaiibeachsafety.com/rest/conditions.json",
+// Perform query for csv data. Call createMarkers when complete
+d3.csv(queryData,
 
   function (response) {
     console.log(response);
@@ -82,17 +82,17 @@ d3.json("https://hawaiibeachsafety.com/rest/conditions.json",
 
       // For each station, create a marker and bind a popup with the station's name
       var beachMarker = L.marker([response[i].lat, response[i].lon])
-        .bindPopup("<h4>" + response[i].beach + "</h4>" + "<hr>" +
-                    "<h6>Island: " + response[i].island + "</h6>" +
-                    "<h6>Shore: " + response[i].shore + "</h6>" +
-                    "<hr>" +
-                    "<h6>Temperature: " + response[i].temp + " F" + "</h6>" +
-                    "<h6>Weather: " + response[i].weather + "</h6>" +
-                    "<h6>Surf: " + response[i].surf + "</h6>" +
-                    "<h6>" + response[i].link + "</h6>");
-                    
+        .bindPopup("<h1>" + response[i].beach + "</h1>" + "<hr>" +
+          "<h3>Island: " + response[i].island + "</h3>" +
+          "<h3>Address: " + response[i].address + "</h3>" + "<hr>" +
+          // "<h2>" + "Current Weather Conditions" + "</h2>" +
+          "<h3>Name of Lodging: " + response[i].name + "</h3>" +
+          "<h3>Type of Lodging: " + response[i].type + "</h3>" +
+          "<h3>Opened: " + response[i].year_open + "</h3>");
+
 
       // Add the marker to the bikeMarkers array
+      // console.log(beachMarker);
       beachMarkers.push(beachMarker);
     }
 
