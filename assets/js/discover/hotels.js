@@ -81,14 +81,15 @@ d3.json(queryData,
     for (var i = 0; i < response.length; i++) {
 
       // For each station, create a marker and bind a popup with the station's name
-      var beachMarker = L.marker([response[i].lat, response[i].lon])
-        .bindPopup("<h1>" + response[i].beach + "</h1>" + "<hr>" +
-          "<h3>Island: " + response[i].island + "</h3>" +
-          "<h3>Address: " + response[i].address + "</h3>" + "<hr>" +
-          // "<h2>" + "Current Weather Conditions" + "</h2>" +
-          "<h3>Name of Lodging: " + response[i].name + "</h3>" +
-          "<h3>Type of Lodging: " + response[i].type + "</h3>" +
-          "<h3>Opened: " + response[i].year_open + "</h3>");
+      var beachMarker = L.marker([response.lat, response.lon])
+      console.log(beachMarker);
+        // .bindPopup("<h1>" + response[i].beach + "</h1>" + "<hr>" +
+        //   "<h3>Island: " + response[i].island + "</h3>" +
+        //   "<h3>Address: " + response[i].address + "</h3>" + "<hr>" +
+        //   // "<h2>" + "Current Weather Conditions" + "</h2>" +
+        //   "<h3>Name of Lodging: " + response[i].name + "</h3>" +
+        //   "<h3>Type of Lodging: " + response[i].type + "</h3>" +
+        //   "<h3>Opened: " + response[i].year_open + "</h3>");
 
 
       // Add the marker to the bikeMarkers array

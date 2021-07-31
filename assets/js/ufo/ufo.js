@@ -1,58 +1,71 @@
-var tableData = d3.json("ufoData.json");
-console.log(tableData);
+// from data.js
+var tableData = data;
+
+// get table references
 var tbody = d3.select("tbody");
 
-// read data from data.js into table on html using JS
-tableData.forEach(function(ufoData) {
-  // console.log(ufoData);
-  var row = tbody.append("tr");
-
-  Object.entries(ufoData).forEach(function([key, value]) {
-    // console.log(key, value);
-    var cell = row.append("td");
-    cell.text(value);
-  });
-});
-
-console.log(tableData);
-
-// filter the data
-var form = d3.select("#shape");
-var button = d3.select("#filter-btn");
-
-// Assign handler function to target objects in HTML file
-form.on("submit", runFilter);
-button.on("click", runFilter);
-
-// Declare handler function
-function runFilter() {
-  d3.event.preventDefault();
-  // assign input value in the form to variable
-  // var dateInput = d3.select("#datetime").property("value").trim();
-  var cityInput = d3.select("#city").property("value").toLowerCase().trim();
-  var shapeInput = d3.select("#shape").property("value").toLowerCase().trim();
-  
-  // track of inputs on console log
-  // console.group(`Date: ${dateInput}`);
-  console.log(`City: ${cityInput}`);
-  console.log(`Shape: ${shapeInput}`);
-
-  // empty the table object before appending filter results
+function buildTable(data) {
+  // First, clear out any existing data
   tbody.html("");
 
-  // Filter sightings to specified date
-  var results = tableData.filter(sighting => (sighting.city == cityInput || cityInput == "") &&
-                                (sighting.shape == shapeInput || shapeInput == "")
-                                );
-  
-  
-  results.forEach((uforesults) => {
+  // Next, loop through each object in the data
+  // and append a row and cells for each value in the row
+  data.forEach((dataRow) => {
+    // Append a row to the table body
     var row = tbody.append("tr");
-    Object.entries(uforesults).forEach(([key, value]) => {
+
+    // Loop through each field in the dataRow and add
+    // each value as a table cell (td)
+    Object.values(dataRow).forEach((val) => {
       var cell = row.append("td");
-      cell.text(value);
+      cell.text(val);
     });
   });
 }
 
-  
+// Keep Track of all filters
+var filters = {};
+
+function updateFilters() {
+
+  // Save the element, value, and id of the filter that was changed
+  var changedElement = d3.select(this).select("input");
+  console.log(changedElement)
+  var elementValue = changedElement.property("value");
+  console.log(`elementValue: ${elementValue}`)
+  var filterId = changedElement.attr("id");
+
+  // If a filter value was entered then add that filterId and value
+  // to the filters list. Otherwise, clear that filter from the filters object
+  if (elementValue) {
+    filters[filterId] = elementValue;
+  }
+  else {
+    delete filters[filterId];
+  }
+
+  // Call function to apply all filters and rebuild the table
+  filterTable();
+
+}
+
+function filterTable() {
+
+  // Set the filteredData to the tableData
+  let filteredData = tableData;
+
+  // Loop through all of the filters and keep any data that
+  // matches the filter values
+  Object.entries(filters).forEach(([key, value]) => {
+    filteredData = filteredData.filter(row => row[key] === value);
+  });
+
+  // Finally, rebuild the table using the filtered Data
+  buildTable(filteredData);
+}
+
+// Attach an event to listen for changes to each filter
+d3.selectAll(".filter").on("change", updateFilters);
+
+// Build the table when the page loads
+buildTable(tableData);
