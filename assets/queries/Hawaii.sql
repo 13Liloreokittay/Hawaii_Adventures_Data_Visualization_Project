@@ -1,6 +1,6 @@
 DROP TABLE hotels 
 DROP TABLE climate
-
+DROP TABLE ufo_sightings
 
 CREATE TABLE hotels (
 	latitude DECIMAL NOT NULL,
@@ -28,8 +28,15 @@ CREATE TABLE climate (
 	sep DECIMAL, 
 	oct DECIMAL, 
 	nov DECIMAL,
-	december DECIMAL,
+	december DECIMAL,	
 	annual DECIMAL
 
 );
 SELECT * FROM climate
+--------------------------------
+CREATE TABLE ufo_sightings(
+	dates DATE, 
+	city VARCHAR(100),
+	shape VARCHAR(30)
+);
+SELECT * FROM ufo_sightings
