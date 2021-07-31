@@ -55,17 +55,17 @@ function createMap(beachConditions) {
 }
 
 // Store our API endpoint inside queryUrl
-var queryUrl = "https://hawaiibeachsafety.com/rest/conditions.json";
+// var queryUrl = "https://hawaiibeachsafety.com/rest/conditions.json";
 
-// Perform a GET request to the query URL
-d3.json(queryUrl, function (data) {
-  console.log(data);
-});
+// // Perform a GET request to the query URL
+// d3.json(queryUrl, function (data) {
+//   console.log(data);
+// });
 
 
 
 // Perform an API call to the API to get station information. Call createMarkers when complete
-d3.json("https://hawaiibeachsafety.com/rest/conditions.json",
+d3.json("/assets/js/discover/conditions.json",
 
   function (response) {
     console.log(response);
@@ -75,7 +75,7 @@ d3.json("https://hawaiibeachsafety.com/rest/conditions.json",
 
     // Initialize an array to hold beach markers
     var beachMarkers = [];
-    console.log(beachMarker);
+    console.log(beachMarkers);
 
     // Loop through the stations array
     for (var i = 0; i < response.length; i++) {

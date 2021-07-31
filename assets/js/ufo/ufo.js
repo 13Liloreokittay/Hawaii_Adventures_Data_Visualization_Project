@@ -1,4 +1,5 @@
 var tableData = d3.json("ufoData.json");
+console.log(tableData);
 var tbody = d3.select("tbody");
 
 // read data from data.js into table on html using JS

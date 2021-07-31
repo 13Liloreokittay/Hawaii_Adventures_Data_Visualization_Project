@@ -55,7 +55,7 @@ function createMap(beachConditions) {
 }
 
 // Store our API endpoint inside queryUrl
-var queryData = "../../assets/data/csv/lodging_hawaii.csv";
+var queryData = "/assets/js/discover/hotels.json";
 
 // Perform a GET request to the query URL
 d3.csv(queryData, function (data) {
@@ -65,7 +65,7 @@ d3.csv(queryData, function (data) {
 
 
 // Perform query for csv data. Call createMarkers when complete
-d3.csv(queryData,
+d3.json(queryData,
 
   function (response) {
     console.log(response);
@@ -75,7 +75,7 @@ d3.csv(queryData,
 
     // Initialize an array to hold beach markers
     var beachMarkers = [];
-    console.log(beachMarker);
+    console.log(beachMarkers);
 
     // Loop through the stations array
     for (var i = 0; i < response.length; i++) {
