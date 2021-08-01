@@ -1,3 +1,29 @@
+function getColor(type) {
+  if (type = "HOTEL") {
+    return "rgb(240, 107, 107)"
+  } else {
+    if (type = "INDIVIDUAL VACATION UNIT") {
+      return "rgb(240, 167, 107)"
+    } else {
+      if (type = "CONDOMINIUM HOTEL") {
+        return "rgb(243, 186, 77)"
+      } else {
+        if (type = "BED & BREAKFAST") {
+          return "rgb(243, 219, 77)"
+        } else {
+          if (type = "TIMESHARE") {
+            return "rgb(226, 243, 77)"
+          } else {
+            return "rgb(183, 243, 77)"
+          }
+        }
+      }
+    }
+  }
+};
+
+
+
 function createMap(hotelMarkers) {
   console.log(hotelMarkers);
 
@@ -58,8 +84,8 @@ function createMap(hotelMarkers) {
 // var queryData = "/assets/js/discover/hotelData.geojson";
 var queryData = "/assets/js/discover/hotelData.geojson";
 
-d3.json(queryData, function(data) {
- 
+d3.json(queryData, function (data) {
+
   createFeatures(data.features);
   console.log(data.features);
 });
@@ -67,13 +93,16 @@ d3.json(queryData, function(data) {
 function createFeatures(hotelData) {
   function onEachFeaturePrep(feature, layer) {
     layer.bindPopup("<h4>" + feature.properties.name + "</h4>" + "<hr>" +
-      "<h6>" + feature.properties.island + "</h6>" +
-      "<h6>" + feature.properties.name + "</h6>");
-  }
+      "<h6>type of Lodging: " + feature.properties.type + "</h6>" +
+      "<h6 text-center>Islande: " + feature.properties.island + "</h6>" +
+      "<h6>Year Opened: " + feature.properties.year_open + "</h6>" +
+      "<h6>Address: " + feature.properties.address + "</h6>")
+  };
 
-  var hotelMarkers = L.geoJSON(hotelData, { 
+  var hotelMarkers = L.geoJSON(hotelData, {
     onEachFeature: onEachFeaturePrep
   });
 
   createMap(hotelMarkers);
+
 }
